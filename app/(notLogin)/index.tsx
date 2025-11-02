@@ -2,7 +2,6 @@ import { View, Text, Pressable, StyleSheet } from 'react-native';
 import { useSession } from '@/context/AuthContext';
 import { WithSafeAreaVIew } from '@/components/WithSafeAreaVIew';
 import { useRef } from 'react';
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import BottomSheet from '@gorhom/bottom-sheet';
 import { LoginMethodBottomSheet } from '@/components/auth/LoginMethodBottomSheet';
 
@@ -11,13 +10,12 @@ function LandingPage() {
   const bottomSheetRef = useRef<BottomSheet>(null);
 
   const handleLoginPress = () => {
+    // FIXME: 로그인 바텀시트가 열리지않는 현상
     bottomSheetRef.current?.expand();
   };
 
   const handleEmailLogin = () => {
     bottomSheetRef.current?.close();
-    // TODO: 이메일 로그인 화면으로 이동
-    signIn();
   };
 
   const handleSocialLogin = (provider: string) => {
@@ -28,7 +26,7 @@ function LandingPage() {
   };
 
   return (
-    <GestureHandlerRootView style={{ flex: 1 }}>
+    <View style={{ flex: 1 }}>
       <WithSafeAreaVIew>
         <View style={styles.container}>
           <Text style={styles.title}>랜딩페이지</Text>
@@ -50,7 +48,7 @@ function LandingPage() {
         onEmailLogin={handleEmailLogin}
         onSocialLogin={handleSocialLogin}
       />
-    </GestureHandlerRootView>
+    </View>
   );
 }
 
