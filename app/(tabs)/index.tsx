@@ -1,32 +1,34 @@
-import {StyleSheet, View, Text} from 'react-native';
-import {WithSafeAreaVIew} from "@/components/WithSafeAreaVIew";
+import { Text, View, Pressable, StyleSheet } from 'react-native';
+import { WithSafeAreaVIew } from '@/components/WithSafeAreaVIew';
+import { useSession } from '@/context/AuthContext';
 
-export default function HomeScreen() {
+export function HomeScreen() {
+  const { signOut } = useSession();
+
   return (
-      <WithSafeAreaVIew>
-        <View>
-          <Text>Home</Text>
-        </View>
-      </WithSafeAreaVIew>
-
+    <WithSafeAreaVIew>
+      <View>
+        <Text>Home</Text>
+        <Pressable style={styles.logoutButton} onPress={signOut}>
+          <Text style={styles.logoutText}>로그아웃</Text>
+        </Pressable>
+      </View>
+    </WithSafeAreaVIew>
   );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
+  logoutButton: {
+    backgroundColor: '#ff4444',
+    padding: 10,
+    marginTop: 20,
+    borderRadius: 5,
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
+  logoutText: {
+    color: 'white',
+    textAlign: 'center',
+    fontWeight: 'bold',
   },
 });
+
+export default HomeScreen;
