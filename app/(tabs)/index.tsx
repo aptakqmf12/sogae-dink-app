@@ -16,8 +16,6 @@ export function HomeScreen() {
   return (
     <WithSafeAreaVIew>
       <View style={styles.container}>
-        <Text style={styles.header}>Home</Text>
-
         <ScrollView
           showsVerticalScrollIndicator={false}
           contentContainerStyle={styles.scrollContent}
@@ -40,11 +38,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 16,
-  },
-  header: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 16,
   },
   scrollContent: {
     paddingBottom: 20,
