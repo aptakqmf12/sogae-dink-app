@@ -5,6 +5,7 @@ import { HapticTab } from '@/components/haptic-tab';
 import { CustomHeader } from '@/components/CustomHeader';
 import { Colors } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
+import Profile from '@/app/(main)/profile';
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
@@ -19,7 +20,7 @@ export default function TabLayout() {
       }}
     >
       <Tabs.Screen name="index" options={{ title: '홈' }} />
-      <Tabs.Screen name="myMenu" options={{ title: '마이메뉴' }} />
+      <Tabs.Screen name="Profile" options={{ title: '마이메뉴' }} />
     </Tabs>
   );
 }

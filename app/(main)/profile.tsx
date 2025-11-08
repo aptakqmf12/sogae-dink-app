@@ -2,7 +2,7 @@ import { WithSafeAreaVIew } from '@/components/WithSafeAreaVIew';
 import { View, Text, Pressable } from 'react-native';
 import { useSession } from '@/context/AuthContext';
 
-export default function MyMenu() {
+export default function Profile() {
   const { signOut } = useSession();
 
   const handleLogout = () => {
