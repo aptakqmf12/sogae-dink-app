@@ -5,5 +5,9 @@ interface WithSafeAreaVIewProps {
 }
 
 export function WithSafeAreaVIew({ children }: WithSafeAreaVIewProps) {
-  return <SafeAreaView style={{ flex: 1 }}>{children}</SafeAreaView>;
+  return (
+    <SafeAreaView style={{ flex: 1 }} edges={['left', 'right']}>
+      {children}
+    </SafeAreaView>
+  );
 }
