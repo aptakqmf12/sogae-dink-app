@@ -5,7 +5,6 @@ import { HapticTab } from '@/components/haptic-tab';
 import { CustomHeader } from '@/components/CustomHeader';
 import { Colors } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
-import Profile from '@/app/(main)/profile';
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
