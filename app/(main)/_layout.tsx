@@ -19,7 +19,7 @@ export default function TabLayout() {
       }}
     >
       <Tabs.Screen name="index" options={{ title: '홈' }} />
-      <Tabs.Screen name="Profile" options={{ title: '마이메뉴' }} />
+      <Tabs.Screen name="profile" options={{ title: '마이메뉴' }} />
     </Tabs>
   );
 }
