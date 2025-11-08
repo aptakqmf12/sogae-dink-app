@@ -20,7 +20,7 @@ function LandingPage() {
 
   const handleSocialLogin = (provider: string) => {
     bottomSheetRef.current?.close();
-    // TODO: 소셜 로그인 처리
+
     console.log(`${provider} 로그인 선택됨`);
     signIn();
   };
@@ -29,7 +29,9 @@ function LandingPage() {
     <View style={{ flex: 1 }}>
       <WithSafeAreaVIew>
         <View style={styles.container}>
-          <Text style={styles.title}>랜딩페이지</Text>
+          <View style={styles.lading}>
+            <Text>랜딩페이지</Text>
+          </View>
 
           <View>
             <Pressable style={styles.button} onPress={handleLoginPress}>
@@ -58,10 +60,14 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     padding: 10,
   },
-  title: { fontSize: 20, height: 500 },
+  lading: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    fontSize: 20,
+    height: 500,
+  },
   button: {
     backgroundColor: 'gray',
-
     padding: 10,
     marginTop: 10,
   },

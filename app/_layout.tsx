@@ -26,13 +26,13 @@ function RootLayoutNav() {
 
     const inAuthGroup = segments[0] === '(tabs)';
 
-    // if (!session && inAuthGroup) {
-    //   // Redirect to the sign-in page.
-    //   router.replace('/(notLogin)');
-    // } else if (session && !inAuthGroup) {
-    //   // Redirect away from the sign-in page.
-    //   router.replace('/(tabs)');
-    // }
+    if (!session && inAuthGroup) {
+      // Redirect to the sign-in page.
+      router.replace('/(notLogin)');
+    } else if (session && !inAuthGroup) {
+      // Redirect away from the sign-in page.
+      router.replace('/(tabs)');
+    }
   }, [session, segments, isLoading]);
 
   useEffect(() => {
