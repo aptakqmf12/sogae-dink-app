@@ -1,4 +1,5 @@
 import { View, Text, Pressable, StyleSheet } from 'react-native';
+import { Image } from 'expo-image';
 import { WithSafeAreaVIew } from '@/components/WithSafeAreaVIew';
 import { useRouter } from 'expo-router';
 
@@ -17,10 +18,15 @@ function LandingPage() {
     <WithSafeAreaVIew>
       <View style={styles.container}>
         <View style={styles.lading}>
-          <Text>랜딩페이지</Text>
+          <Image
+            style={styles.image}
+            source={require('@/assets/images/sogae-dink-icon.png')}
+            contentFit="cover"
+            transition={100}
+          />
         </View>
 
-        <View>
+        <View style={styles.buttonGroup}>
           <Pressable style={styles.button} onPress={handleLoginPress}>
             <Text style={styles.buttonText}>로그인</Text>
           </Pressable>
@@ -41,19 +47,26 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   lading: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    fontSize: 20,
     height: 500,
   },
+  image: {
+    flex: 1,
+    width: '100%',
+  },
+
+  buttonGroup: {
+    gap: 12,
+  },
   button: {
-    backgroundColor: 'gray',
-    padding: 10,
-    marginTop: 10,
+    backgroundColor: 'pink',
+    padding: 16,
+    borderRadius: 8,
   },
   buttonText: {
     color: 'white',
     textAlign: 'center',
+    fontSize: 16,
+    fontWeight: '600',
   },
 });
 

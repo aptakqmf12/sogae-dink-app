@@ -4,7 +4,7 @@
     "slug": "sogae-dink-rn",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/images/sogae-dink-icon.png",
     "scheme": "sogaedinkrn",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
