@@ -1,19 +1,15 @@
 import { View, StyleSheet, Text, Image, Pressable } from 'react-native';
+import { UserCard } from '@/types/common';
 
-interface MessageCardProps {
-  thumbnail: string;
-  name: string;
-  old: string;
-  messagePreview: string;
-  newMessageCount: number;
-  onPress?: () => void;
+interface MessageCardProps extends UserCard {
+  onPress: () => void;
 }
 
 export function MessageCard({
   thumbnail,
   name,
   old,
-  messagePreview,
+  lastMessage,
   newMessageCount,
   onPress,
 }: MessageCardProps) {
@@ -45,7 +41,7 @@ export function MessageCard({
           )}
         </View>
         <Text style={styles.messagePreview} numberOfLines={1}>
-          {messagePreview}
+          {lastMessage}
         </Text>
       </View>
     </Pressable>

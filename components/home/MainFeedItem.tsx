@@ -1,45 +1,87 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Image } from 'react-native';
+import { UserCard } from '@/types/common';
 
-interface MainFeedItemProps {
-  title: string;
-  description: string;
-}
+export type MainFeedItemProps = UserCard;
 
-export function MainFeedItem({ title, description }: MainFeedItemProps) {
+export function MainFeedItem({
+  thumbnail,
+  name,
+  old,
+  lastMessage,
+  newMessageCount,
+}: MainFeedItemProps) {
   return (
     <View style={styles.feed}>
-      <View style={styles.thumbnail}></View>
-      <Text style={styles.title}>{title}</Text>
-      <Text style={styles.description}>{description}</Text>
+      <View style={styles.imageContainer}>
+        <Image source={{ uri: thumbnail }} style={styles.thumbnail} />
+        {newMessageCount > 0 && (
+          <View style={styles.badge}>
+            <Text style={styles.badgeText}>{newMessageCount}</Text>
+          </View>
+        )}
+      </View>
+      <View style={styles.info}>
+        <Text style={styles.name}>
+          {name}, {old}
+        </Text>
+        <Text style={styles.lastMessage} numberOfLines={2}>
+          {lastMessage}
+        </Text>
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   feed: {
-    backgroundColor: '#f5f5f5',
-    padding: 16,
-    marginBottom: 12,
-    borderRadius: 8,
+    backgroundColor: '#fff',
+    marginBottom: 16,
+    borderRadius: 16,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 3,
-    gap: 12,
+    shadowOpacity: 0.15,
+    shadowRadius: 8,
+    elevation: 4,
+    overflow: 'hidden',
+  },
+  imageContainer: {
+    position: 'relative',
+    width: '100%',
+    height: 280,
   },
   thumbnail: {
-    width: 100,
-    height: 100,
+    width: '100%',
+    height: '100%',
     backgroundColor: '#eee',
   },
-  title: {
-    fontSize: 18,
-    fontWeight: '600',
-    marginBottom: 8,
+  badge: {
+    position: 'absolute',
+    top: 12,
+    right: 12,
+    backgroundColor: '#ff6b9d',
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 12,
+    minWidth: 28,
+    alignItems: 'center',
   },
-  description: {
+  badgeText: {
     fontSize: 14,
+    fontWeight: '700',
+    color: '#fff',
+  },
+  info: {
+    padding: 16,
+    gap: 8,
+  },
+  name: {
+    fontSize: 20,
+    fontWeight: '700',
+    color: '#333',
+  },
+  lastMessage: {
+    fontSize: 15,
     color: '#666',
+    lineHeight: 22,
   },
 });

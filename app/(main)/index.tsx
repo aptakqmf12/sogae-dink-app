@@ -1,29 +1,57 @@
 import { View, StyleSheet, SectionList, Text } from 'react-native';
 import { WithSafeAreaVIew } from '@/components/WithSafeAreaVIew';
 import { MainFeedItem } from '@/components/home/MainFeedItem';
+import { UserCard } from '@/types/common';
 
-const DUMMY_DATA = [
+const DUMMY_DATA: { title: string; data: UserCard[] }[] = [
   {
-    title: '추천 피드',
+    title: '추천',
     data: [
-      { id: 1, title: '첫 번째 아이템', description: '설명 내용입니다.' },
-      { id: 2, title: '두 번째 아이템', description: '설명 내용입니다.' },
-      { id: 3, title: '세 번째 아이템', description: '설명 내용입니다.' },
+      {
+        id: 1,
+        thumbnail: 'https://i.pravatar.cc/150?img=15',
+        name: '지현',
+        old: '28',
+        lastMessage: '안녕하세요! 반갑습니다',
+        newMessageCount: 0,
+      },
+      {
+        id: 2,
+        thumbnail: 'https://i.pravatar.cc/150?img=32',
+        name: '수진',
+        old: '26',
+        lastMessage: '좋은 하루 되세요~',
+        newMessageCount: 2,
+      },
+      {
+        id: 3,
+        thumbnail: 'https://i.pravatar.cc/150?img=44',
+        name: '민호',
+        old: '30',
+        lastMessage: '오늘 날씨 좋네요',
+        newMessageCount: 1,
+      },
     ],
   },
   {
-    title: '인기 피드',
+    title: '인기',
     data: [
-      { id: 4, title: '네 번째 아이템', description: '설명 내용입니다.' },
-      { id: 5, title: '다섯 번째 아이템', description: '설명 내용입니다.' },
-    ],
-  },
-  {
-    title: '최신 피드',
-    data: [
-      { id: 6, title: '여섯 번째 아이템', description: '설명 내용입니다.' },
-      { id: 7, title: '일곱 번째 아이템', description: '설명 내용입니다.' },
-      { id: 8, title: '여덟 번째 아이템', description: '설명 내용입니다.' },
+      {
+        id: 4,
+        thumbnail: 'https://i.pravatar.cc/150?img=8',
+        name: '서연',
+        old: '27',
+        lastMessage: '커피 한잔 어때요?',
+        newMessageCount: 0,
+      },
+      {
+        id: 5,
+        thumbnail: 'https://i.pravatar.cc/150?img=21',
+        name: '준석',
+        old: '29',
+        lastMessage: '영화 보러 가실래요?',
+        newMessageCount: 3,
+      },
     ],
   },
 ];

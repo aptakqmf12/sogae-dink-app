@@ -1,13 +1,9 @@
 import { View, StyleSheet, Text, Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { UserCard } from '@/types/common';
 
-interface NewMatchedCardProps {
-  thumbnail: string;
-  name: string;
-  old: string;
-  messagePreview: string;
-  newMessageCount: number;
-  onPress?: () => void;
+interface NewMatchedCardProps extends UserCard {
+  onPress: () => void;
 }
 
 export function NewMatchedCard({ thumbnail, name }: NewMatchedCardProps) {
@@ -16,13 +12,13 @@ export function NewMatchedCard({ thumbnail, name }: NewMatchedCardProps) {
       <View style={styles.avatarWrapper}>
         <View style={styles.avatar}>
           <Image
-            source={{ uri: thumbnail, width: 64, height: 64 }}
+            source={{ uri: thumbnail, width: 24, height: 24 }}
             style={styles.avatarImage}
           />
         </View>
 
         <View style={styles.icon}>
-          <Ionicons name="heart" size={32} color="#ff6b9d" />
+          <Ionicons name="heart" size={24} color="#ff6b9d" />
         </View>
       </View>
 
@@ -35,7 +31,7 @@ const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
     justifyContent: 'center',
-    gap: 24,
+    gap: 16,
   },
   avatarWrapper: {
     position: 'relative',
@@ -56,12 +52,12 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   avatarImage: {
-    width: 100,
-    height: 100,
+    width: 48,
+    height: 48,
   },
 
   name: {
-    fontSize: 16,
+    fontSize: 14,
   },
 });
 
