@@ -1,7 +1,8 @@
 import { WithSafeAreaVIew } from '@/components/WithSafeAreaVIew';
 import { View, Text, Pressable, StyleSheet, ScrollView } from 'react-native';
 import { useSession } from '@/context/AuthContext';
-import { ProfileHeader, MenuSection } from './_components';
+import { ProfileHeader } from '@/components/messages/ProfileHeader';
+import { MenuSection } from '@/components/messages/MenuSection';
 
 export default function Profile() {
   const { signOut } = useSession();

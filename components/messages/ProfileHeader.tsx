@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet } from 'react-native';
-import { ThumbnailSelect } from '@/app/(main)/profile/_components/ThumbnailSelect';
+import { ThumbnailSelect } from '@/components/messages/ThumbnailSelect';
 
 interface ProfileHeaderProps {
   name: string;

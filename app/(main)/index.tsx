@@ -1,6 +1,6 @@
 import { View, StyleSheet, SectionList, Text } from 'react-native';
 import { WithSafeAreaVIew } from '@/components/WithSafeAreaVIew';
-import { MainFeedItem } from '@/app/(main)/_component/MainFeedItem';
+import { MainFeedItem } from '@/components/home/MainFeedItem';
 
 const DUMMY_DATA = [
   {
@@ -28,7 +28,7 @@ const DUMMY_DATA = [
   },
 ];
 
-export function Home() {
+function Home() {
   return (
     <WithSafeAreaVIew>
       <View style={styles.container}>
