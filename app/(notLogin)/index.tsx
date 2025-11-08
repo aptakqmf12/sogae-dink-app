@@ -1,56 +1,36 @@
 import { View, Text, Pressable, StyleSheet } from 'react-native';
-import { useSession } from '@/context/AuthContext';
 import { WithSafeAreaVIew } from '@/components/WithSafeAreaVIew';
-import { useRef } from 'react';
-import BottomSheet from '@gorhom/bottom-sheet';
-import { LoginMethodBottomSheet } from '@/components/auth/LoginMethodBottomSheet';
+import { useRouter } from 'expo-router';
 
 function LandingPage() {
-  const { signIn } = useSession();
-  const bottomSheetRef = useRef<BottomSheet>(null);
+  const router = useRouter();
 
   const handleLoginPress = () => {
-    // FIXME: 로그인 바텀시트가 열리지않는 현상
-    bottomSheetRef.current?.expand();
+    router.push('/(notLogin)/LoginSelect');
   };
 
-  const handleEmailLogin = () => {
-    bottomSheetRef.current?.close();
-  };
-
-  const handleSocialLogin = (provider: string) => {
-    bottomSheetRef.current?.close();
-
-    console.log(`${provider} 로그인 선택됨`);
-    signIn();
+  const handleSignupPress = () => {
+    router.push('/(notLogin)/SignupSelect');
   };
 
   return (
-    <View style={{ flex: 1 }}>
-      <WithSafeAreaVIew>
-        <View style={styles.container}>
-          <View style={styles.lading}>
-            <Text>랜딩페이지</Text>
-          </View>
-
-          <View>
-            <Pressable style={styles.button} onPress={handleLoginPress}>
-              <Text style={styles.buttonText}>로그인</Text>
-            </Pressable>
-
-            <Pressable style={styles.button}>
-              <Text style={styles.buttonText}>회원가입</Text>
-            </Pressable>
-          </View>
+    <WithSafeAreaVIew>
+      <View style={styles.container}>
+        <View style={styles.lading}>
+          <Text>랜딩페이지</Text>
         </View>
-      </WithSafeAreaVIew>
 
-      <LoginMethodBottomSheet
-        ref={bottomSheetRef}
-        onEmailLogin={handleEmailLogin}
-        onSocialLogin={handleSocialLogin}
-      />
-    </View>
+        <View>
+          <Pressable style={styles.button} onPress={handleLoginPress}>
+            <Text style={styles.buttonText}>로그인</Text>
+          </Pressable>
+
+          <Pressable style={styles.button} onPress={handleSignupPress}>
+            <Text style={styles.buttonText}>회원가입</Text>
+          </Pressable>
+        </View>
+      </View>
+    </WithSafeAreaVIew>
   );
 }
 
