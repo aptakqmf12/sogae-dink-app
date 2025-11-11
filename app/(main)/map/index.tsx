@@ -1,7 +1,15 @@
-import { View, StyleSheet, Image, Text, ActivityIndicator } from 'react-native';
+import {
+  View,
+  StyleSheet,
+  Image,
+  Text,
+  ActivityIndicator,
+  TouchableOpacity,
+} from 'react-native';
 import MapView, { Marker, Region } from 'react-native-maps';
 import { useState, useEffect, useRef, useMemo } from 'react';
 import * as Location from 'expo-location';
+import { Ionicons } from '@expo/vector-icons';
 
 interface NearbyUser {
   id: number;
@@ -107,6 +115,21 @@ export default function MapScreen() {
       }
     : undefined;
 
+  // 내 위치로 이동
+  const goToMyLocation = () => {
+    if (location && mapRef.current) {
+      mapRef.current.animateToRegion(
+        {
+          latitude: location.coords.latitude,
+          longitude: location.coords.longitude,
+          latitudeDelta: 0.01,
+          longitudeDelta: 0.01,
+        },
+        0
+      );
+    }
+  };
+
   return (
     <View style={styles.container}>
       {initialRegion && (
@@ -162,6 +185,17 @@ export default function MapScreen() {
         <View style={styles.errorContainer}>
           <Text style={styles.errorText}>{errorMsg}</Text>
         </View>
+      )}
+
+      {/* 내 위치로 이동 버튼 */}
+      {location && (
+        <TouchableOpacity
+          style={styles.myLocationButton}
+          onPress={goToMyLocation}
+          activeOpacity={0.7}
+        >
+          <Ionicons name="locate" size={28} color="#fff" />
+        </TouchableOpacity>
       )}
     </View>
   );
@@ -236,5 +270,21 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 14,
     textAlign: 'center',
+  },
+  myLocationButton: {
+    position: 'absolute',
+    right: 20,
+    bottom: 20,
+    width: 48,
+    height: 48,
+    borderRadius: '50%',
+    backgroundColor: '#ff6b9d',
+    justifyContent: 'center',
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
+    shadowRadius: 8,
+    elevation: 8,
   },
 });
