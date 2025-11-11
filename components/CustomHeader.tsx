@@ -1,13 +1,12 @@
 import {
   View,
-  Text,
   StyleSheet,
   Image,
   TouchableOpacity,
   Pressable,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { AntDesign, Ionicons } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 
 export function CustomHeader() {
@@ -36,19 +35,7 @@ export function CustomHeader() {
 
         {/* 우측 유틸리티 존 */}
         <View style={styles.rightSection}>
-          <TouchableOpacity
-            style={styles.iconButton}
-            onPress={() => console.log('알림 클릭')}
-          >
-            <Text style={styles.icon}>
-              <AntDesign name="message" size={24} color="black" />
-            </Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            style={styles.iconButton}
-            onPress={handlePressMap}
-          >
+          <TouchableOpacity style={styles.iconButton} onPress={handlePressMap}>
             <Ionicons name="map" size={24} color="#ff6b9d" />
           </TouchableOpacity>
         </View>
