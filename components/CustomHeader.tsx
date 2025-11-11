@@ -18,6 +18,10 @@ export function CustomHeader() {
     router.push('/(main)');
   };
 
+  const handlePressMap = () => {
+    router.push('/(main)/map');
+  };
+
   return (
     <View style={[styles.wrapper, { paddingTop: insets.top }]}>
       <View style={styles.container}>
@@ -43,7 +47,7 @@ export function CustomHeader() {
 
           <TouchableOpacity
             style={styles.iconButton}
-            onPress={() => console.log('메시지 클릭')}
+            onPress={handlePressMap}
           >
             <Ionicons name="map" size={24} color="#ff6b9d" />
           </TouchableOpacity>
