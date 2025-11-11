@@ -1,8 +1,11 @@
 import { View, StyleSheet, Text, FlatList } from 'react-native';
 import MessageCard from '@/components/messages/MessageCard';
 import NewMatchedCard from '@/components/messages/NewMatchedCard';
+import { useRouter } from 'expo-router';
 
 export function Messages() {
+  const router = useRouter();
+
   const messageList = [
     {
       id: 1,
@@ -58,7 +61,18 @@ export function Messages() {
   ];
 
   const handleMessagePress = (id: number) => {
-    console.log('Message pressed:', id);
+    const message = messageList.find((msg) => msg.id === id);
+    if (message) {
+      router.push({
+        pathname: '/(main)/messages/[id]',
+        params: {
+          id: message.id.toString(),
+          name: message.name,
+          age: message.old,
+          thumbnail: message.thumbnail,
+        },
+      });
+    }
   };
 
   return (
