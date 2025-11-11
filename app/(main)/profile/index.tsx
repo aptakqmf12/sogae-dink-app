@@ -1,4 +1,3 @@
-import { WithSafeAreaVIew } from '@/components/WithSafeAreaVIew';
 import { View, Text, Pressable, StyleSheet, ScrollView } from 'react-native';
 import { useSession } from '@/context/AuthContext';
 import { ProfileHeader } from '@/components/messages/ProfileHeader';
@@ -44,28 +43,26 @@ export default function Profile() {
   ];
 
   return (
-    <WithSafeAreaVIew>
-      <ScrollView style={styles.container}>
-        <ProfileHeader
-          name={profileData.name}
-          email={profileData.email}
-          stats={profileData.stats}
-        />
+    <ScrollView style={styles.container}>
+      <ProfileHeader
+        name={profileData.name}
+        email={profileData.email}
+        stats={profileData.stats}
+      />
 
-        <MenuSection title="계정" items={accountMenuItems} />
-        <MenuSection title="설정" items={settingsMenuItems} />
-        <MenuSection title="지원" items={supportMenuItems} />
+      <MenuSection title="계정" items={accountMenuItems} />
+      <MenuSection title="설정" items={settingsMenuItems} />
+      <MenuSection title="지원" items={supportMenuItems} />
 
-        {/* 로그아웃 버튼 */}
-        <Pressable style={styles.logoutButton} onPress={handleLogout}>
-          <Text style={styles.logoutText}>로그아웃</Text>
-        </Pressable>
+      {/* 로그아웃 버튼 */}
+      <Pressable style={styles.logoutButton} onPress={handleLogout}>
+        <Text style={styles.logoutText}>로그아웃</Text>
+      </Pressable>
 
-        <View style={styles.footer}>
-          <Text style={styles.footerText}>버전 1.0.0</Text>
-        </View>
-      </ScrollView>
-    </WithSafeAreaVIew>
+      <View style={styles.footer}>
+        <Text style={styles.footerText}>버전 1.0.0</Text>
+      </View>
+    </ScrollView>
   );
 }
 

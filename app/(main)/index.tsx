@@ -1,5 +1,4 @@
 import { View, StyleSheet, SectionList, Text } from 'react-native';
-import { WithSafeAreaVIew } from '@/components/WithSafeAreaVIew';
 import { MainFeedItem } from '@/components/home/MainFeedItem';
 import { UserCard } from '@/types/common';
 
@@ -58,22 +57,20 @@ const DUMMY_DATA: { title: string; data: UserCard[] }[] = [
 
 function Home() {
   return (
-    <WithSafeAreaVIew>
-      <View style={styles.container}>
-        <SectionList
-          sections={DUMMY_DATA}
-          keyExtractor={(item) => item.id.toString()}
-          renderItem={({ item }) => <MainFeedItem {...item} />}
-          renderSectionHeader={({ section: { title } }) => (
-            <View style={styles.sectionHeader}>
-              <Text style={styles.sectionHeaderText}>{title}</Text>
-            </View>
-          )}
-          showsVerticalScrollIndicator={false}
-          stickySectionHeadersEnabled={false}
-        />
-      </View>
-    </WithSafeAreaVIew>
+    <View style={styles.container}>
+      <SectionList
+        sections={DUMMY_DATA}
+        keyExtractor={(item) => item.id.toString()}
+        renderItem={({ item }) => <MainFeedItem {...item} />}
+        renderSectionHeader={({ section: { title } }) => (
+          <View style={styles.sectionHeader}>
+            <Text style={styles.sectionHeaderText}>{title}</Text>
+          </View>
+        )}
+        showsVerticalScrollIndicator={false}
+        stickySectionHeadersEnabled={false}
+      />
+    </View>
   );
 }
 

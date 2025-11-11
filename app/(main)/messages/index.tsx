@@ -1,5 +1,4 @@
 import { View, StyleSheet, Text, FlatList } from 'react-native';
-import { WithSafeAreaVIew } from '@/components/WithSafeAreaVIew';
 import MessageCard from '@/components/messages/MessageCard';
 import NewMatchedCard from '@/components/messages/NewMatchedCard';
 
@@ -63,42 +62,40 @@ export function Messages() {
   };
 
   return (
-    <WithSafeAreaVIew>
-      <View style={styles.container}>
-        <View style={styles.matchingSection}>
-          <Text style={styles.sectionTitle}>새로운 매칭</Text>
+    <View style={styles.container}>
+      <View style={styles.matchingSection}>
+        <Text style={styles.sectionTitle}>새로운 매칭</Text>
 
-          <FlatList
-            data={matchedList}
-            keyExtractor={(item) => item.id.toString()}
-            renderItem={({ item }) => (
-              <NewMatchedCard
-                {...item}
-                onPress={() => handleMessagePress(item.id)}
-              />
-            )}
-            contentContainerStyle={styles.matchingList}
-            horizontal={true}
-            showsVerticalScrollIndicator={false}
-          />
-        </View>
-
-        <View style={styles.messageSection}>
-          <Text style={styles.sectionTitle}>메시지</Text>
-          <FlatList
-            data={messageList}
-            keyExtractor={(item) => item.id.toString()}
-            renderItem={({ item }) => (
-              <MessageCard
-                {...item}
-                onPress={() => handleMessagePress(item.id)}
-              />
-            )}
-            showsVerticalScrollIndicator={false}
-          />
-        </View>
+        <FlatList
+          data={matchedList}
+          keyExtractor={(item) => item.id.toString()}
+          renderItem={({ item }) => (
+            <NewMatchedCard
+              {...item}
+              onPress={() => handleMessagePress(item.id)}
+            />
+          )}
+          contentContainerStyle={styles.matchingList}
+          horizontal={true}
+          showsVerticalScrollIndicator={false}
+        />
       </View>
-    </WithSafeAreaVIew>
+
+      <View style={styles.messageSection}>
+        <Text style={styles.sectionTitle}>메시지</Text>
+        <FlatList
+          data={messageList}
+          keyExtractor={(item) => item.id.toString()}
+          renderItem={({ item }) => (
+            <MessageCard
+              {...item}
+              onPress={() => handleMessagePress(item.id)}
+            />
+          )}
+          showsVerticalScrollIndicator={false}
+        />
+      </View>
+    </View>
   );
 }
 
