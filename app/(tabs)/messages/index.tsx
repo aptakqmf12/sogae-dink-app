@@ -64,7 +64,7 @@ export function Messages() {
     const message = messageList.find((msg) => msg.id === id);
     if (message) {
       router.push({
-        pathname: '/(main)/messages/[id]',
+        pathname: '/messages/[id]',
         params: {
           id: message.id.toString(),
           name: message.name,

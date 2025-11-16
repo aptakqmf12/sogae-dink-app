@@ -14,11 +14,11 @@ export function CustomHeader() {
   const router = useRouter();
 
   const handlePressLogo = () => {
-    router.push('/(main)');
+    router.push('/(tabs)');
   };
 
   const handlePressMap = () => {
-    router.push('/(main)/map');
+    router.navigate('/map');
   };
 
   return (
